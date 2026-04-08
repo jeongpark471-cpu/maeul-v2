@@ -1,8 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist } from 'next/font/google'
 import './globals.css'
-
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 
 export const metadata: Metadata = {
   title: { default: '마을광장', template: '%s | 마을광장' },
@@ -22,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className={geist.variable}>
-      <body className="min-h-dvh bg-white antialiased">
+    <html lang="ko">
+      <body className="min-h-dvh antialiased">
         {children}
       </body>
     </html>

@@ -30,32 +30,32 @@ export default function XPBar() {
   const remaining = nextMin ? nextMin - user.xp : 0
 
   return (
-    <div className="mx-4 my-3 rounded-xl bg-gradient-to-r from-violet-50 to-purple-50 p-3">
+    <div className="ivory-card mx-4 my-3 rounded-2xl p-3">
       <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-bold text-white">
+          <span className="rounded-md bg-gradient-to-r from-[#8B6010] to-[#C89020] px-1.5 py-0.5 text-[10px] font-bold text-white">
             Lv.{level}
           </span>
-          <span className="text-sm font-semibold text-gray-800">{name}</span>
+          <span className="text-sm font-semibold text-[#0D0B08]">{name}</span>
         </div>
-        <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-semibold text-violet-700">
+        <span className="rounded-full border border-[rgba(200,170,100,0.3)] bg-[rgba(255,250,235,0.5)] px-2 py-0.5 text-[10px] font-semibold text-[#B8820A]">
           x{multiplier} 배율
         </span>
       </div>
 
-      <div className="mb-1.5 h-2 overflow-hidden rounded-full bg-violet-200">
+      <div className="mb-1.5 h-2 overflow-hidden rounded-full bg-[rgba(200,170,100,0.2)]">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-violet-500 to-purple-500 transition-all duration-500"
+          className="h-full rounded-full bg-gradient-to-r from-[#8B6010] to-[#D4A030] transition-all duration-500"
           style={{ width: `${progressPct}%` }}
         />
       </div>
 
-      <div className="flex items-center justify-between text-[11px] text-gray-500">
+      <div className="flex items-center justify-between text-[11px] text-[#5A5040]">
         <span>{user.xp.toLocaleString()} XP</span>
         {nextMin ? (
-          <span>다음 레벨까지 <strong className="text-violet-600">{remaining.toLocaleString()}</strong> XP</span>
+          <span>다음 레벨까지 <strong className="text-[#B8820A]">{remaining.toLocaleString()}</strong> XP</span>
         ) : (
-          <span className="font-semibold text-violet-600">최고 레벨!</span>
+          <span className="font-semibold text-[#B8820A]">최고 레벨!</span>
         )}
       </div>
     </div>

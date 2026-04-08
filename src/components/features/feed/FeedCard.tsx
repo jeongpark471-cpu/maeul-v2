@@ -8,67 +8,50 @@ import { timeAgo } from '@/lib/utils/timeAgo'
 import type { Post } from '@/types'
 
 const CATEGORY_COLORS: Record<string, string> = {
-  일상: 'bg-blue-50 text-blue-600',
-  잡담: 'bg-blue-50 text-blue-600',
-  맛집: 'bg-orange-50 text-orange-600',
-  육아: 'bg-pink-50 text-pink-600',
-  질문: 'bg-green-50 text-green-600',
-  나눔: 'bg-emerald-50 text-emerald-600',
-  이슈: 'bg-red-50 text-red-600',
-  생활정보: 'bg-yellow-50 text-yellow-700',
-  부동산: 'bg-indigo-50 text-indigo-600',
+  일상: 'bg-blue-100/60 text-blue-700',
+  잡담: 'bg-blue-100/60 text-blue-700',
+  맛집: 'bg-orange-100/60 text-orange-700',
+  육아: 'bg-pink-100/60 text-pink-700',
+  질문: 'bg-green-100/60 text-green-700',
+  나눔: 'bg-emerald-100/60 text-emerald-700',
+  이슈: 'bg-red-100/60 text-red-700',
+  생활정보: 'bg-yellow-100/60 text-yellow-800',
+  부동산: 'bg-indigo-100/60 text-indigo-700',
 }
 
 export default function FeedCard({ post }: { post: Post }) {
   const { liked, count, toggleLike } = useLike(post.id, post.like_count)
-  const catColor = CATEGORY_COLORS[post.category] ?? 'bg-gray-50 text-gray-600'
+  const catColor = CATEGORY_COLORS[post.category] ?? 'bg-[rgba(200,170,100,0.15)] text-[#5A5040]'
 
   return (
-    <article className="border-b border-gray-50 px-4 py-4">
-      {/* 헤더 */}
+    <article className="ivory-card mx-4 mb-2.5 rounded-2xl p-4">
       <div className="mb-2 flex items-center gap-2">
         <Avatar src={post.users?.avatar_url} name={post.users?.full_name ?? '?'} size="sm" />
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <span className="truncate text-sm font-semibold text-gray-900">
-              {post.users?.full_name}
-            </span>
+            <span className="truncate text-sm font-semibold text-[#0D0B08]">{post.users?.full_name}</span>
             {post.users?.level && <Badge level={post.users.level} />}
           </div>
-          <span className="text-xs text-gray-400">{timeAgo(post.created_at)}</span>
+          <span className="text-xs text-[#8A7D6B]">{timeAgo(post.created_at)}</span>
         </div>
         <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ${catColor}`}>
           {post.category}
         </span>
       </div>
 
-      {/* 본문 */}
       <Link href={`/plaza/${post.id}`} className="block">
-        {post.title && (
-          <h3 className="mb-0.5 text-sm font-bold text-gray-900">{post.title}</h3>
-        )}
-        <p className="line-clamp-2 text-sm leading-relaxed text-gray-700">
-          {post.content}
-        </p>
+        {post.title && <h3 className="mb-0.5 text-sm font-bold text-[#0D0B08]">{post.title}</h3>}
+        <p className="line-clamp-2 text-sm leading-relaxed text-[#5A5040]">{post.content}</p>
       </Link>
 
-      {/* 액션 바 */}
-      <div className="mt-2.5 flex items-center gap-4 text-xs text-gray-400">
-        <button
-          onClick={toggleLike}
-          className={`flex items-center gap-1 ${liked ? 'text-red-500' : 'hover:text-gray-600'}`}
-        >
-          <span>{liked ? '❤️' : '🤍'}</span>
-          <span>{count}</span>
+      <div className="mt-2.5 flex items-center gap-4 text-xs text-[#8A7D6B]">
+        <button onClick={toggleLike} className={`flex items-center gap-1 ${liked ? 'text-red-500' : 'hover:text-[#5A5040]'}`}>
+          <span>{liked ? '❤️' : '🤍'}</span><span>{count}</span>
         </button>
-        <Link href={`/plaza/${post.id}`} className="flex items-center gap-1 hover:text-gray-600">
-          <span>💬</span>
-          <span>{post.comment_count}</span>
+        <Link href={`/plaza/${post.id}`} className="flex items-center gap-1 hover:text-[#5A5040]">
+          <span>💬</span><span>{post.comment_count}</span>
         </Link>
-        <span className="flex items-center gap-1">
-          <span>👁️</span>
-          <span>{post.view_count ?? 0}</span>
-        </span>
+        <span className="flex items-center gap-1"><span>👁️</span><span>{post.view_count ?? 0}</span></span>
       </div>
     </article>
   )

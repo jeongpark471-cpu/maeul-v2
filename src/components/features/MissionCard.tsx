@@ -17,10 +17,10 @@ export default function MissionCard({ completedIds }: MissionCardProps) {
   const total = MISSIONS.length
 
   return (
-    <div className="mx-4 my-3 rounded-xl border border-violet-100 bg-violet-50/50 p-4">
+    <div className="mx-4 my-3 overflow-hidden rounded-2xl bg-gradient-to-br from-[rgba(83,74,183,0.82)] to-[rgba(123,116,212,0.85)] p-4 text-white shadow-lg">
       <div className="mb-3 flex items-center justify-between">
-        <h3 className="text-sm font-bold text-gray-900">오늘의 미션</h3>
-        <span className="text-xs font-semibold text-violet-600">
+        <h3 className="text-sm font-bold">오늘의 미션</h3>
+        <span className="rounded-full bg-white/20 px-2 py-0.5 text-xs font-semibold">
           {done}/{total} 완료
         </span>
       </div>
@@ -32,25 +32,21 @@ export default function MissionCard({ completedIds }: MissionCardProps) {
             <div key={m.id} className="flex flex-col items-center gap-1">
               <div
                 className={`flex h-10 w-10 items-center justify-center rounded-full text-lg ${
-                  completed
-                    ? 'bg-violet-100 opacity-60'
-                    : 'bg-white shadow-sm'
+                  completed ? 'bg-white/20 opacity-60' : 'bg-white/30 shadow-sm'
                 }`}
               >
                 {completed ? '✅' : m.emoji}
               </div>
-              <span className="text-[10px] text-gray-500">{m.label}</span>
-              <span className="text-[10px] font-semibold text-violet-600">
-                +{m.xp}
-              </span>
+              <span className="text-[10px] text-white/80">{m.label}</span>
+              <span className="text-[10px] font-semibold text-white/90">+{m.xp}</span>
             </div>
           )
         })}
       </div>
 
       {done < total && (
-        <p className="mt-3 text-center text-[11px] text-gray-400">
-          모든 미션 완료 시 보너스 <strong className="text-violet-600">+50 XP</strong>
+        <p className="mt-3 text-center text-[11px] text-white/70">
+          모든 미션 완료 시 보너스 <strong className="text-white">+50 XP</strong>
         </p>
       )}
     </div>

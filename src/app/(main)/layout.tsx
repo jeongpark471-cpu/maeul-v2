@@ -50,7 +50,7 @@ export default function MainLayout({
   }, [setUser, setLoading])
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-lg flex-col">
+    <div className="glass-layer relative z-10 mx-auto flex min-h-dvh max-w-lg flex-col shadow-2xl">
       <Header />
       <main className="flex-1 pb-20">{children}</main>
       <Footer />
